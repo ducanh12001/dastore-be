@@ -2,7 +2,7 @@ const { Kafka } = require('kafkajs');
 
 // Tạo kết nối Kafka
 const kafka = new Kafka({
-  clientId: 'first_topic',
+  clientId: 'store_topic',
   brokers: ['localhost:9092'],
 });
 
@@ -12,10 +12,10 @@ const producer = kafka.producer();
 // Gửi thông báo Kafka
 async function sendKafkaMessage(email, message) {
   try {
-    console.log("đã vô senkafka");
+    console.log("đã vô sendkafka");
     await producer.connect();
     await producer.send({
-      topic: 'first_topic',
+      topic: 'store_topic',
       messages: [
         {
           value: JSON.stringify({ email: email, message: message }),

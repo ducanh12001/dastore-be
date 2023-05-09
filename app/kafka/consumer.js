@@ -3,7 +3,7 @@ const nodemailer = require('nodemailer');
 
 // Tạo kết nối Kafka
 const kafka = new Kafka({
-  clientId: 'first_topic',
+  clientId: 'store_topic',
   brokers: ['localhost:9092'],
 });
 
@@ -15,7 +15,7 @@ async function sendEmailNotification() {
   try {
     console.log("đã vô consumer");
     await consumer.connect();
-    await consumer.subscribe({ topic: 'first_topic', fromBeginning: true });
+    await consumer.subscribe({ topic: 'store_topic', fromBeginning: true });
     await consumer.run({
       eachMessage: async ({ topic, partition, message }) => {
         console.log({
@@ -39,6 +39,7 @@ async function sendEmailNotification() {
           to: obj.email,
           subject: 'New Kafka message received',
           text: obj.message,
+          html: obj.message
         };
 
         // Gửi email
