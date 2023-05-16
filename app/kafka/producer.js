@@ -2,7 +2,7 @@ const { Kafka } = require('kafkajs');
 
 // Tạo kết nối Kafka
 const kafka = new Kafka({
-  clientId: 'store_topic',
+  clientId: 'store',
   brokers: ['localhost:9092'],
 });
 
