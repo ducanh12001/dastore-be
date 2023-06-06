@@ -1,0 +1,13 @@
+Trên Command Line ở thư mục của Kafka
+
+- Khởi chạy Zookeeper:
+.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+
+- Khởi chạy Kafka Server:
+.\bin\windows\kafka-server-start.bat .\config\server.properties
+
+- Tạo chủ đề có tên store_topic
+.\bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --topic store_topic --create --partitions 3 --replication-factor 1
+
+- Hiển thị dữ liệu từ chủ đề store_topic của Kafka:
+.\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic store_topic --from-beginning
